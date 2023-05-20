@@ -21,3 +21,13 @@ class PostsTestCase(TestCase):
         response = self.client.get(reverse("contacts-page"))
         self.assertTemplateUsed("posts/contacts.html")
         self.assertEqual(response.status_code, 200)
+
+    def test_update_post(self):
+        response = self.client.get(reverse("post-update", 1))
+        self.assertTemplateUsed("posts/iupdate_post.html")
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_post(self):
+        response = self.client.get(reverse("post-delete", 1))
+        self.assertTemplateUsed("posts/idelete_post.html")
+        self.assertEqual(response.status_code, 200)
